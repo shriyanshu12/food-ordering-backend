@@ -1,27 +1,3 @@
-#spring:
-#  application:
-#    name: food-ordering-backend
-#  datasource:
-#    url:  jdbc:mysql://localhost:3306/food_app?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
-#    username: root
-#    password: Shriya@9521
-#
-#  jpa:
-#    hibernate:
-#      ddl-auto: update
-#    show-sql: true
-#    properties:
-#      hibernate:
-#        format_sql: true
-#
-#server:
-#  port: 8081
-#
-#jwt:
-#  secret: 9b7c5a1e8f4d2c6b9a7f3e1d8c5b2a9f7e6d4c1b8a5f3d9c7e2b6a1f8d4c9e7
-#  expiration: 86400000
-
-
   spring:
     application:
       name: food-ordering-backend
