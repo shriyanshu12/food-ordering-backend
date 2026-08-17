@@ -39,14 +39,18 @@ public class User extends BaseEntity {
     @Column(nullable = false)
     private Boolean enabled = true;
 
+    @OneToMany(
+            mappedBy = "user",
+            cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY
+    )
+    @Builder.Default
+    private List<Order> orders = new ArrayList<>();
+
 //    @OneToOne(mappedBy = "user",
 //            cascade = CascadeType.ALL,
 //            fetch = FetchType.LAZY)
 //    private Cart cart;
 //
-//    @OneToMany(mappedBy = "user",
-//            cascade = CascadeType.ALL,
-//            fetch = FetchType.LAZY)
-//    @Builder.Default
-//    private List<Order> orders = new ArrayList<>();
+
 }

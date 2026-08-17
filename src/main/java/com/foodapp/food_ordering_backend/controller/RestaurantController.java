@@ -3,6 +3,8 @@ package com.foodapp.food_ordering_backend.controller;
 import com.foodapp.food_ordering_backend.dto.request.RestaurantRequest;
 import com.foodapp.food_ordering_backend.dto.response.RestaurantResponse;
 import com.foodapp.food_ordering_backend.service.RestaurantService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -15,10 +17,18 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/restaurants")
 @RequiredArgsConstructor
+@Tag(
+        name = "Restaurants",
+        description = "APIs for managing restaurants and searching restaurants"
+)
 public class RestaurantController {
 
     private final RestaurantService restaurantService;
 
+    @Operation(
+            summary = "Create Restaurant",
+            description = "Creates a new restaurant (Admin only)"
+    )
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     @PreAuthorize("hasRole('ADMIN')")
@@ -34,6 +44,10 @@ public class RestaurantController {
 //        return restaurantService.getAllRestaurants();
 //    }
 
+    @Operation(
+            summary = "Get Restaurant",
+            description = "Returns restaurant details by ID"
+    )
     @GetMapping("/{id}")
     public RestaurantResponse getRestaurantById(
             @PathVariable Long id) {
@@ -41,6 +55,10 @@ public class RestaurantController {
         return restaurantService.getRestaurantById(id);
     }
 
+    @Operation(
+            summary = "Update Restaurant",
+            description = "Updates restaurant details (Admin only)"
+    )
     @PutMapping("/{id}")
     @PreAuthorize("hasRole('ADMIN')")
     public RestaurantResponse updateRestaurant(
@@ -50,6 +68,10 @@ public class RestaurantController {
         return restaurantService.updateRestaurant(id, request);
     }
 
+    @Operation(
+            summary = "Delete Restaurant",
+            description = "Deletes a restaurant (Admin only)"
+    )
     @DeleteMapping("/{id}")
     @PreAuthorize("hasRole('ADMIN')")
     @ResponseStatus(HttpStatus.NO_CONTENT)
@@ -93,6 +115,10 @@ public class RestaurantController {
 //    }
 
 
+    @Operation(
+            summary = "Search Restaurants",
+            description = "Search restaurants using keyword, city, state, open status, minimum rating, pagination and sorting"
+    )
     @GetMapping
     public Page<RestaurantResponse> getRestaurants(
 

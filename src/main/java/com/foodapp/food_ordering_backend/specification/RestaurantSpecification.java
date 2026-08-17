@@ -21,29 +21,6 @@ public class RestaurantSpecification {
 
             List<Predicate> predicates = new ArrayList<>();
 
-//            // Search by restaurant name OR description
-//            if (keyword != null && !keyword.isBlank()) {
-//
-//                Predicate namePredicate =
-//                        criteriaBuilder.like(
-//                                criteriaBuilder.lower(root.get("name")),
-//                                "%" + keyword.toLowerCase() + "%"
-//                        );
-//
-//                Predicate descriptionPredicate =
-//                        criteriaBuilder.like(
-//                                criteriaBuilder.lower(root.get("description")),
-//                                "%" + keyword.toLowerCase() + "%"
-//                        );
-//
-//                predicates.add(
-//                        criteriaBuilder.or(
-//                                namePredicate,
-//                                descriptionPredicate
-//                        )
-//                );
-//            }
-
             // Global keyword search (Name, Description, City, State)
             if (keyword != null && !keyword.isBlank()) {
 
